@@ -24,8 +24,11 @@
  // using post request for giving the data
  router.post('/',async(req,res)=>{   
      const help = new newschema({              //ftech the data accroding the schema
-         name:req.body.name,
-         sub:req.body.sub
+         email:req.body.email,
+         password:req.body.password,
+         newpassword:req.body.newpassword,
+         firstname:req.body.firstname,
+         lastname:req.body.lastname
      })
      
      try {

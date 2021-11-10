@@ -11,11 +11,15 @@
  
  const app=express()
  const cors = require('cors')
+ const PORT = 1109;
 
  app.use(cors())
 
- mongoose.connect(url,{useNewUrlParser:true})   //connecting to mongoose 
- const con =mongoose.connection                 // connecting to database
+ mongoose.connect(url,{useNewUrlParser:true}).then(()=>{
+     console.log('connection success')
+ })   //connecting to mongoose 
+ 
+ const con =mongoose.connection;                 // connecting to database
  
  con.on("open",()=>{                             //giving an open event to make sure it is running.
      console.log(" getting connected...")
@@ -27,10 +31,10 @@
  
  
  const sivaRouter=require('./routersss/help')    //importing and store the data
- app.use('/help',sivaRouter)
+ app.use('/',sivaRouter);
  
  
  
- app.listen(4000,()=>{         // connecting the local host using port number
+ app.listen(PORT,function(){         // connecting the local host using port number
      console.log('server started')
  })
